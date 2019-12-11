@@ -1,0 +1,76 @@
+.nav-link {
+  font-size: large;
+  cursor: pointer;
+}
+
+.navbar-light .navbar-nav .nav-link.active {
+  background: gainsboro
+}
+
+div.card-header {
+ font-size: large;
+}
+
+div.card {
+  margin-top: 10px
+}
+
+.table {
+  margin-top: 10px
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+body {
+  font-family: Roboto, Arial, sans-serif;
+  margin: 0;
+}
+.basic-container {
+  padding: 30px;
+}
+.version-info {
+  font-size: 8pt;
+  float: right;
+}
+
+
+
+// -------------------------------------------------
+
+.nav-link {
+  font-size: large;
+  cursor: pointer;
+}
+
+.navbar-light .navbar-nav .nav-link.active {
+  background: gainsboro
+}
+
+div.card-header {
+ font-size: large;
+}
+
+div.card {
+  margin-top: 10px
+}
+
+.table {
+  margin-top: 10px;
+}
+
+.margin{
+  margin:20px;
+}
+
+
+
+.theme-green .bs-datepicker-head,
+.theme-green .bs-datepicker-body table td span.selected, 
+{
+  background-color: #337ab7 !important;
+}
+
+.theme-green .bs-datepicker-body table td.week span{
+  color: #337ab7 !important;
+}

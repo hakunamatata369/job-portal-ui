@@ -1,0 +1,61 @@
+<div class='card'>
+    <div class='card-header'>
+      {{pageTitle}}
+    </div>
+    <div class='card-body'>
+      <!-- <div class='row'>
+        <div class='col-md-2'>Filter by:</div>
+        <div class='col-md-4'>
+          <input type='text'
+                 [(ngModel)]='listFilter' />
+        </div>
+      </div>
+      <div class='row'
+           *ngIf='listFilter'>
+        <div class='col-md-6'>
+          <h4>Filtered by: {{listFilter}}</h4>
+        </div>
+      </div> -->
+      <div class='table-responsive'>
+        <table class='table'
+               *ngIf='interviews && interviews.length'>
+          <thead>
+            <tr>
+              <th>JobID</th>
+              <th>Job Role</th>
+              <th>Candidate Name</th>
+              <th>Interview Scheduled Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let interview of interviews' 
+            (click)='onSelected(interview)'>
+              <td>{{ interview.job.jobId }}</td>
+              <td>{{ interview.job.jobDescription }}</td>
+              <td>{{ interview.candidate.firstName + interview.candidate.lastName}}</td>
+              <td>{{ interview.scheduledDate}}</td>
+              <!-- <td>
+                <pm-star [rating]='interview.starRating'
+                         (ratingClicked)='onRatingClicked($event)'>
+                </pm-star>
+              </td> -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </nav>
+    </div>
+
+  </div>
+  <!-- <div *ngIf='errorMessage'
+       class='alert alert-danger'>
+    Error: {{ errorMessage }}
+  </div> -->

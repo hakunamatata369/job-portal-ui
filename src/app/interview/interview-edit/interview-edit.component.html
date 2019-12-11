@@ -1,0 +1,130 @@
+<div class='row'>
+    <div class='col-md-2'></div>
+
+<div class="col-md-8">
+<div class="card">
+    <div class="card-header">
+        {{pageTitle}}
+    </div>
+
+    <div class="card-body">
+        <form novalidate (ngSubmit)="saveinterview()">
+            <fieldset *ngIf="interview">
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="interviewJobId">
+                        JobID</label>
+                    <div class="col-md-8">
+                        <input class="form-control" id="interviewJobId" type="text" disabled placeholder="Job ID"
+                            [(ngModel)]=interview.job.jobId name="interviewJobID" #interviewJobId="ngModel" />
+                        <!-- <span class="invalid-feedback">
+                            <span *ngIf="interviewNameVar.errors?.required">
+                                interview name is required.
+                            </span>
+                            <span *ngIf="interviewNameVar.errors?.minlength">
+                                interview name must be at least three characters.
+                            </span>
+                        </span> -->
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="interviewId">Interview ID</label>
+                    <div class="col-md-8">
+                        <input class="form-control" id="interviewId" placeholder="interviewId" disabled [(ngModel)]=interview.interviewID
+                            name="interviewId" #interviewId="ngModel" />
+                        <!-- <span class="invalid-feedback">
+                            <span *ngIf="interviewCodeVar.errors?.required">
+                                interview code is required.
+                            </span>
+                        </span> -->
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="CandidateId">Candidate ID</label>
+
+                    <div class="col-md-8">
+                        <input class="form-control" id="CandidateId" placeholder="Candidate ID" disabled [(ngModel)]=interview.candidate.userId
+                            name="CandidateId" #interviewId="ngModel" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="Competencies">Competencies</label>
+
+                    <div class="col-md-8">
+                        <ng-multiselect-dropdown [placeholder]="'Add Competencies'" [data]="dropdownList" [(ngModel)]="selectedItems"
+                            [settings]="dropdownSettings" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)"
+                            [ngModelOptions]="{standalone: true}">
+                        </ng-multiselect-dropdown>
+                    </div>
+                </div>
+                <!-- <div class="form-group row">
+                    <label class="col-md-2 col-form-label"
+                           for="empName">Employee Name</label>
+
+                    <div class="col-md-8">
+                        <input class="form-control"
+                               id="empName"
+                               placeholder="Employee Name"
+                               
+                               [(ngModel)]=interview.candidate.firstName
+                               name="empName"
+                               #interviewName="ngModel"
+                                />
+                    </div>
+                </div> -->
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="InterviewDate">Interview Date</label>
+
+                    <div class="col-md-8 datePicker">
+                        <!-- <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp="bsDatepicker" bsDatepicker
+                            [(bsValue)]="myDateValue"> -->
+                        <!-- <input class="form-control" id="InterviewDate" placeholder="Interview Date" [(ngModel)]=interview.scheduledDate
+                                                name="InterviewDate" #InterviewDate="ngModel" /> -->
+
+                        <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp="bsDatepicker" bsDatepicker
+                            [(bsValue)]="myDateValue">
+                    </div>
+                </div>
+
+                <!-- <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="assignedTo">Assigned To</label>
+
+                    <div class="col-md-8">
+                        <input class="form-control" id="assignedTo" placeholder="Assigned To" [(ngModel)]=interview.interviewer.firstName
+                            name="assignedTo" #assignedTo="ngModel" />
+                    </div>
+                </div> -->
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="roundStatus">Status</label>
+
+                    <div class="col-md-8">
+                        <input class="form-control" id="roundStatus" placeholder="RoundStatus" [(ngModel)]=interview.roundStatus
+                            name="roundStatus" #roundStatus="ngModel" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-4 col-md-offset-2">
+                        <button class="btn btn-primary mr-2" type="submit" style="width:80px" [disabled]='!editForm?.valid'>
+                            Save
+                        </button>
+                        <a class="btn btn-light mr-2" style="width:80px" (click)="cancel()">
+                            Cancel
+                        </a>
+                        <!-- <a class="btn btn-light" style="width:80px" (click)="deleteinterview()">
+                            Delete
+                        </a> -->
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+<div *ngIf='errorMessage' class='alert alert-danger'>
+    Error: {{ errorMessage }}
+</div>
+</div>
+</div>

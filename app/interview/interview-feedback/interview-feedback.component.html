@@ -1,0 +1,115 @@
+<div class='row'>
+    <div class='col-md-2'></div>
+
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                {{pageTitle}} of {{ interview.candidate.firstName }}{{interview.candidate.lastName}}
+            </div>
+
+            <div class="card-body">
+                <form novalidate (ngSubmit)="submitinterviewFeedback()">
+                    <fieldset *ngIf="interview">
+                        <!-- <div class="form-group row">
+                            <label class="col-md-2 col-form-label" for="candName">Candidate Name</label>
+
+                            <div class="col-md-8">
+                                <input class="form-control" id="candName" placeholder="Candidate Name" [(ngModel)]=interview.candidate.firstName
+                                    name="candName" #candidateName="ngModel" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label" for="interviewJobId">
+                                JobID</label>
+                            <div class="col-md-8">
+                                <input class="form-control" id="interviewJobId" type="text" disabled placeholder="Job ID"
+                                    [(ngModel)]=interview.job.jobId name="interviewJobID" #interviewJobId="ngModel" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label" for="interviewId">Interview ID</label>
+                            <div class="col-md-8">
+                                <input class="form-control" id="interviewId" placeholder="interviewId" disabled
+                                    [(ngModel)]=interview.interviewID name="interviewId" #interviewId="ngModel" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label" for="CandidateId">Candidate ID</label>
+
+                            <div class="col-md-8">
+                                <input class="form-control" id="CandidateId" placeholder="Candidate ID" disabled
+                                    [(ngModel)]=interview.candidate.userId name="CandidateId" #interviewId="ngModel" />
+                            </div>
+                        </div> -->
+                        <div class="row">
+                            <label class="col-md-2 col-form-label" for="Competencies">Competencies</label>
+                        </div>
+                        <div class="form-group row" *ngFor='let competency of interview.competencies'>
+                            <label class="col-md-2 col-form-label badge badge-secondary">{{competency.competency_type}}</label>
+                            <div class="col-md-8">
+                                <!-- <app-star-rating [rating]='competency.rating'>
+                                        </app-star-rating> -->
+                                <star-rating value="{{competency.rating}}" totalstars="5" checkedcolor="red" uncheckedcolor="black" size="28px"
+                                    readonly="false" (rate)="onRate($event)"></star-rating>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                                <label class="col-md-2 col-form-label" for="feedBack">FeedBack / Comments</label>
+                                <textarea class="col-md-8 form-control" id="feedBack" rows="3"></textarea>
+                              </div>
+                        <div class="form-group row">
+                                <label class="col-md-8 col-form-label" for="Yes/No">
+                                Would you like to advance this person to the next round?
+                                </label>
+
+                        </div>
+
+                        <!-- <div class="form-group row">
+                            <label class="col-md-2 col-form-label" for="InterviewDate">Interview Date</label>
+
+                            <div class="col-md-8">
+                                <input class="form-control" id="InterviewDate" placeholder="Interview Date" [(ngModel)]=interview.scheduledDate
+                                    name="InterviewDate" #InterviewDate="ngModel" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label" for="assignedTo">Assigned To</label>
+
+                            <div class="col-md-8">
+                                <input class="form-control" id="assignedTo" placeholder="Assigned To" [(ngModel)]=interview.interviewer.firstName
+                                    name="assignedTo" #assignedTo="ngModel" />
+                            </div>
+                        </div> -->
+
+                        <!-- <div class="form-group row">
+                            <label class="col-md-2 col-form-label" for="roundStatus">Status</label>
+
+                            <div class="col-md-8">
+                                <input class="form-control" id="roundStatus" placeholder="RoundStatus" [(ngModel)]=interview.roundStatus
+                                    name="roundStatus" #roundStatus="ngModel" />
+                            </div>
+                        </div> -->
+
+                        <div class="form-group row">
+                            <div class="col-md-4 col-md-offset-2">
+                                <button class="btn btn-primary mr-2" type="submit" style="width:80px" [disabled]='!feedbackForm?.valid'>
+                                    Submit
+                                </button>
+                                <a class="btn btn-light mr-2" style="width:80px" (click)="cancel()">
+                                    Cancel
+                                </a>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <div *ngIf='errorMessage' class='alert alert-danger'>
+            Error: {{ errorMessage }}
+        </div>
+    </div>
+</div>

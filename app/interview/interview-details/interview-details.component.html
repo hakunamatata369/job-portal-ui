@@ -1,0 +1,63 @@
+<div class='card' *ngIf='interview'>
+  <div class='card-header'>
+    {{pageTitle + ' : ' + (interview.job.jobDescription | uppercase)}}
+  </div>
+
+  <div class='card-body'>
+    <div class='row'>
+      <div class='col-md-8'>
+        <div class='row'>
+          <div class='col-md-4'>JobID: </div>
+          <div class='col-md-8'>{{interview.job.jobId}}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-4'>JobDescription: </div>
+          <div class='col-md-8'>{{interview.job.jobDescription}}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-4'>Candidate Name: </div>
+          <div class='col-md-8'>{{ interview.candidate.firstName + interview.candidate.lastName}}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-4'>Scheduled Date: </div>
+          <div class='col-md-8'>{{interview.scheduledDate}}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-4'>Status: </div>
+          <div class='col-md-8'>{{interview.roundStatus}}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-4'>Competencies: </div>
+          <div class='col-md-8'>
+            <ng-container *ngIf="interview.competencies.length >0; else elseBlock">
+              <span *ngFor="let comp of interview.competencies">
+                {{comp.competency_type}}
+              </span>
+            </ng-container>
+            <ng-template #elseBlock> No Competencies added Yet..</ng-template>
+            <!-- <pm-star [rating]='product.starRating'>
+            </pm-star> -->
+          </div>
+
+        </div>
+      </div>
+
+      <!-- <div class='col-md-4'>
+        <img class='center-block img-responsive'
+             [style.width.px]='200'
+             [style.margin.px]='2'
+             [src]='product.imageUrl'
+             [title]='product.productName'>
+      </div> -->
+    </div>
+  </div>
+
+  <div class='card-footer'>
+    <button class='btn btn-outline-secondary' style='width:80px;margin: 20px;' [routerLink]="['/interview', interview.interviewID, 'edit']">
+      <i class='fa fa-chevron-left'></i> Edit
+    </button>
+    <button class='btn btn-outline-secondary' style='width:180px;margin: 20px;' [routerLink]="['/interview', interview.interviewID, 'feedback']">
+      <i class='fa fa-chevron-left'></i> Start Interview
+    </button>
+  </div>
+</div>
